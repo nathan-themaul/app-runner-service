@@ -52,3 +52,8 @@ async function getUniqueFilename(file) {
 
   return file;
 }
+
+module.exports = {
+    uploadToS3,
+    getUniqueFilename,
+  };

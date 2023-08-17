@@ -3,6 +3,7 @@ const express = require('express');
 const axios = require('axios'); // For making HTTP calls
 const router = express.Router();
 const multer = require('multer');
+const { getUniqueFilename, uploadToS3 } = require('./awsUtils');
 const upload = multer();
 
 const fileFields = [
