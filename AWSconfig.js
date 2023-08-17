@@ -4,10 +4,11 @@ const {
     GetSecretValueCommand,
 } = require("@aws-sdk/client-secrets-manager");
 
+const { awsRegion } = require('./package.json').appRunnerConfig;
 const secret_name = "app-runner-service/development/access-key";
 
 const client = new SecretsManagerClient({
-    region: "eu-central-1",
+    region: awsRegion,
 });
 
 async function fetchSecrets() {
@@ -36,7 +37,7 @@ fetchSecrets().then(secrets => {
     AWS.config.update({
         accessKeyId: ACCESS_KEY_ID,
         secretAccessKey: SECRET_ACCESS_KEY,
-        region: process.env.AWS_COGNITO_REGION,
+        region: awsRegion,
     });
 }).catch(error => {
     console.error("Error fetching secrets:", error);
