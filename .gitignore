@@ -9,6 +9,9 @@ yarn-debug.log*
 .env.local
 .env.*.local
 
+# Configurations
+config.json
+
 # Editor-specific
 *.sublime*
 *.swp
