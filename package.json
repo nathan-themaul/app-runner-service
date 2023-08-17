@@ -16,6 +16,7 @@
     "awsRegion": "eu-central-1"
   },
   "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.391.0",
     "archiver": "^5.3.1",
     "aws-sdk": "^2.1438.0",
     "axios": "^1.4.0",
