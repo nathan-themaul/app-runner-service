@@ -1,0 +1,32 @@
+# Node-specific
+node_modules/
+npm-debug.log*
+yarn-error.log
+yarn-debug.log*
+
+# Environment-specific files
+.env
+.env.local
+.env.*.local
+
+# Editor-specific
+*.sublime*
+*.swp
+*.swo
+*.idea/
+.vscode/
+*.log
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Build output
+/dist
+/build
+
+# Other common files to ignore
+*.log
+*.pid
+*.seed
+*.pid.lock
