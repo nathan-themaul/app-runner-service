@@ -8,7 +8,7 @@ const { awsRegion } = require('./package.json').appRunnerConfig;
 const secret_name = "app-runner-service/development/access-key";
 
 const client = new SecretsManagerClient({
-    region: awsRegion,
+    region: "eu-central-1",
 });
 
 async function fetchSecrets() {
@@ -37,7 +37,7 @@ fetchSecrets().then(secrets => {
     AWS.config.update({
         accessKeyId: ACCESS_KEY_ID,
         secretAccessKey: SECRET_ACCESS_KEY,
-        region: awsRegion,
+        region: "eu-central-1",
     });
 }).catch(error => {
     console.error("Error fetching secrets:", error);
