@@ -1,0 +1,7 @@
+version: 1.0
+runtime: nodejs14
+build:
+  commands:
+    - npm install
+start:
+  command: npm start
