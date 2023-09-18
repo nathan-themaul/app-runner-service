@@ -4,6 +4,9 @@ build:
   commands:
     pre-build:
       - n 14.18.3
+      - apt-get update
+      - apt-get install -y python3 python3-pip
+      - pip3 install -r requirements.txt  # Install Python dependencies
     build:
       - npm install
 run:

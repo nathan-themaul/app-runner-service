@@ -4,7 +4,7 @@ const { spawn } = require('child_process');
 const router = express.Router();
 
 router.post('/boundaries', (req, res) => {
-    const pythonProcess = spawn('python', ['python/clustering.py']);
+    const pythonProcess = spawn('python', ['clustering.py']);
     
     let output = "";
     
