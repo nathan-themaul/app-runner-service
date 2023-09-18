@@ -1,6 +1,6 @@
 import sys
-import numpy as np
 import json
+import numpy as np
 from sklearn.cluster import DBSCAN
 from shapely.geometry import LineString, Point, mapping
 from collections import defaultdict
