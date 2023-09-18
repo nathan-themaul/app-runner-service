@@ -18,7 +18,7 @@ router.post('/boundaries', (req, res) => {
     
     pythonProcess.on('close', (code) => {
         if (code !== 0) {
-            return res.status(500).send("Python script failed to execute.");
+            return res.status(500).send(`Python script failed to execute. Code: ${code}`);
         }
         res.status(200).json(JSON.parse(output));
     });
