@@ -16,7 +16,7 @@ const fileFields = [
 
 const uploadMiddleware = upload.fields(fileFields);
 
-router.post('/logbook/upload', uploadMiddleware, async (req, res) => {
+router.post('/logbook', uploadMiddleware, async (req, res) => {
     try {
         const files = [
             req.files['rawLog'][0],
