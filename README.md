@@ -12,5 +12,13 @@ To deploy the contents of this directory to AWS App Runner:
 
 npm run deploy
 
-
+To deploy to ECR :
+1)
+aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 163137052994.dkr.ecr.eu-central-1.amazonaws.com
+2) 
+docker build -t agbo-app-runner .
+3)
+docker tag agbo-app-runner:latest 163137052994.dkr.ecr.eu-central-1.amazonaws.com/agbo-app-runner:latest
+4)
+docker push 163137052994.dkr.ecr.eu-central-1.amazonaws.com/agbo-app-runner:latest
 
