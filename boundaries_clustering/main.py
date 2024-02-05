@@ -70,7 +70,7 @@ def process_data(stage, data=None, method=None):
     elif stage == 'all':
         boundaries, lanes = get_clustering()
         sorted_boundaries = sort_all_boundaries(boundaries)
-        smoothed_boundaries = smooth_boundaries(sorted_boundaries, 'opti_spline')
+        smoothed_boundaries = smooth_boundaries(sorted_boundaries, method)
         converted_points = {str(key): value for key, value in smoothed_boundaries.items()}
         return json.dumps(converted_points, cls=CustomJSONEncoder)
 

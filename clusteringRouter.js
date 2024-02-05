@@ -5,9 +5,13 @@ const router = express.Router();
 
 
 const runClustering = async (method) => {
+    console.log('running clustering with method:', method);
     return new Promise((resolve, reject) => {
-        const pythonProcess = spawn('python', ['./boundaries_clustering/main.py', 'all', method]);
-
+        const pythonProcess = spawn('python', ['./boundaries_clustering/main.py', 'all']);
+        // Write data and method to the stdin of the Python process
+        pythonProcess.stdin.write(JSON.stringify({ data:null, method }));
+        pythonProcess.stdin.end();
+    
         let outputData = '';
         let errorData = '';
 
@@ -36,6 +40,7 @@ const runClustering = async (method) => {
 
 
 const runStep = async (step, data = null, method = null) => {
+    console.log('running step: ', step, 'with method: ', method);
     return new Promise((resolve, reject) => {
       const pythonProcess = spawn('python', ['./boundaries_clustering/main.py', step]);
       // Write data and method to the stdin of the Python process
@@ -74,9 +79,10 @@ router.get('/boundaries', async (req, res) => {
     const methods = Object.keys(req.query).filter(key => key.startsWith('method')).map(key => req.query[key]);
     try {
         const results = await Promise.all(methods.map(method => runClustering(method)));
-        console.log('results:', results);
+        console.log('returning result');
         res.send(results);
     } catch (error) {
+        console.log('error:', error);
         res.status(500).send(error);
     }
 });
@@ -90,6 +96,7 @@ router.post('/step/:step', async (req, res) => {
     const { data, method } = req.body;
     try {
         const result = await runStep(step, data, method);
+        console.log('returning result');
         res.send(result);
     } catch (error) {
         res.status(500).send(error);
